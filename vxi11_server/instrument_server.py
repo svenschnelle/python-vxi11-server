@@ -547,7 +547,7 @@ class Vxi11CoreHandler(Vxi11Handler):
 class InstrumentServer():
     '''Maintains a registry of device handlers and routes incoming client RPC's to appropriate handler.
     '''
-    def __init__(self, default_device_handler=None):
+    def __init__(self, name='inst0', default_device_handler=None):
         '''Initialize the instrument and start a default device handler on inst0.
         
         default_device_handler: (optional) a device_handler class to be use
@@ -561,7 +561,7 @@ class InstrumentServer():
         if default_device_handler is None:
             default_device_handler = Instrument.DefaultInstrumentDevice
 
-        self.add_device_handler(default_device_handler, 'inst0')
+        self.add_device_handler(default_device_handler, name)
         return
 
     def add_device_handler(self, device_handler, device_name=None ):
